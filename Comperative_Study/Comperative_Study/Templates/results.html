@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Model Comparison Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .chart {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+        }
+
+        .best-algo {
+            background: #2ecc71;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Best Algorithm</h1>
+        <div class="best-algo">{{ best_algo }} - Accuracy: {{ accuracy }}</div>
+
+        <h2>Performance Chart</h2>
+        <img class="chart" src="{{ url_for('static', filename=chart_path) }}" alt="Accuracy Chart">
+
+        <h2>Detailed Results</h2>
+        <ul>
+            {% for algo, acc in results.items() %}
+            <li>{{ algo }}: {{ acc }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="footer">
+            <p>© 2024 Machine Learning Model Comparison</p>
+        </div>
+    </div>
+</body>
+</html>
